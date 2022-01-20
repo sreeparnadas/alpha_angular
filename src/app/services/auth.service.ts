@@ -59,6 +59,13 @@ export class AuthService {
       return false;
     }
   }
+  isMp(){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isMp){
+      return true;
+    }else{
+      return false;
+    }
+  }
   isDeveloper(): boolean{
     if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isDeveloper){
       return true;

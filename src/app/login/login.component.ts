@@ -36,6 +36,9 @@ export class LoginComponent implements OnInit {
         if (this.authService.isDeveloper()){
           this.router.navigate(['/developer']).then(r => {});
         }
+        if (this.authService.isMp()){
+          this.router.navigate(['/mp']).then(r => {});
+        }
       }
     });
 

@@ -20,6 +20,7 @@ const routes: Routes = [
 
   },
   { path: 'owner', loadChildren: () => import('./pages/owner/owner.module').then(m => m.OwnerModule) },
+  { path: 'mp', loadChildren: () => import('./pages/mp-level/mp-level.module').then(m => m.MpLevelModule) },
   { path: 'developer', loadChildren: () => import('./pages/developer/developer.module').then(m => m.DeveloperModule) },
 
   { path: 'Sidenav', loadChildren: () => import('./sidenavs/sidenav/sidenav.module').then(m => m.SidenavModule) },
@@ -45,6 +46,8 @@ const routes: Routes = [
   { path: 'LineChart', loadChildren: () => import('./pages/developer/charts/line-chart/line-chart.module').then(m => m.LineChartModule) },
 
   { path: 'BarChart', loadChildren: () => import('./pages/developer/charts/bar-chart/bar-chart.module').then(m => m.BarChartModule) },
+
+  { path: 'mpLevel', loadChildren: () => import('./pages/mp-level/mp-level.module').then(m => m.MpLevelModule) },
 
 ];
 

@@ -29,6 +29,11 @@ export class User{
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 1;
   }
+  get isMp(){
+    // tslint:disable-next-line:triple-equals
+    return this.userTypeId == 3;
+  }
+
   get isDeveloper(){
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 2;
