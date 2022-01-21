@@ -27,6 +27,7 @@ import {SidenavOwnerModule} from "./sidenavs/sidenav-owner/sidenav-owner.module"
 import {SidenavDeveloperModule} from "./sidenavs/sidenav-developer/sidenav-developer.module";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { SidenavMpModule } from './sidenavs/sidenav-mp/sidenav-mp.module';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     HeaderModule,
     SidenavOwnerModule,
     SidenavDeveloperModule,
+    SidenavMpModule,
     FontAwesomeModule,
     MatProgressSpinnerModule
   ],

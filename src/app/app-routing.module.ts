@@ -49,6 +49,8 @@ const routes: Routes = [
 
   { path: 'mpLevel', loadChildren: () => import('./pages/mp-level/mp-level.module').then(m => m.MpLevelModule) },
 
+  { path: 'sidenavMp', loadChildren: () => import('./sidenavs/sidenav-mp/sidenav-mp.module').then(m => m.SidenavMpModule) },
+
 ];
 
 
