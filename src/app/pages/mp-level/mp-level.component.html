@@ -1,25 +1,54 @@
 
-<div>test</div>
+<div class="container">
 
 
-<form [formGroup]="legislativeInputForm" >
+  <form [formGroup]="legislativeInputForm" >
 
-  <mat-form-field>
-    <mat-label>Person Name</mat-label> 
-    <mat-select  formControlName="personName" placeholder="Category">
-      
-    </mat-select>
- 
-      
-  </mat-form-field>
+    <div >
+      <div class>
+        <mat-form-field>
+          <label>Person Name</label>
+          <input formControlName="personName"    placeholder="Category">
+        </mat-form-field>
+        <mat-form-field>
+          <label>Email</label>
+          <input formControlName="email"    placeholder="Category">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <label>Mobile 1</label>
+          <input formControlName="mobile1"  placeholder="Category">
+        </mat-form-field>
+        <mat-form-field>
+          <label>Mobile 2</label>
+          <input formControlName="mobile1"    placeholder="Category">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <label>Voter No.</label>
+          <input formControlName="voterId"    placeholder="Category">
+        </mat-form-field>
+        <mat-form-field>
+          <label>Aadhar No.</label>
+          <input formControlName="aaharId"    placeholder="Category">
+        </mat-form-field>
+      </div>
+    </div>
 
 
-  <!-- <mat-form-field class="col-2">
-    <mat-label>Draw time</mat-label>
-    <mat-input  formControlName="personName" placeholder="Category"> -->      
-    <!-- </mat-select> -->
-  <!-- </mat-form-field> -->
 
-  <!-- <button class="button" type="submit">Purchase</button> -->
 
-</form>
+
+
+    <!-- <mat-form-field class="col-2">
+      <mat-label>Draw time</mat-label>
+      <mat-input  formControlName="personName" placeholder="Category"> -->
+      <!-- </mat-select> -->
+    <!-- </mat-form-field> -->
+
+    <!-- <button class="button" type="submit">Purchase</button> -->
+
+  </form>
+</div>
