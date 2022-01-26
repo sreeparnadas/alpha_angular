@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { AreaService } from 'src/app/services/area.service';
+import { Area } from 'src/app/models/area.model';
+
+
 
 @Component({
   selector: 'app-mp-level',
@@ -21,6 +25,9 @@ export class MpLevelComponent implements OnInit {
     aaharId: new FormControl(null, [Validators.required]),
   });
 
+  areas: Area[] =[];
+
+
 
 
   mpInputForm: FormGroup;
@@ -28,6 +35,7 @@ export class MpLevelComponent implements OnInit {
   constructor(
     // private cartService: CartService,
     private formBuilder: FormBuilder,
+    private areaService: AreaService,
   ) {
     // private cartService: CartService,
 
@@ -48,6 +56,19 @@ export class MpLevelComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.areas = this.areaService.getArea();
+    this.areaService.getGameTypeListener().subscribe((response: Area[]) => {
+      this.areas = response;
+      console.log('ts',this.areas);
+    });
+  }
+  getAllArea(){
+    console.log('ts');
+    this.areas = this.areaService.getArea();
+    this.areaService.getGameTypeListener().subscribe((response: Area[]) => {
+      this.areas = response;
+      console.log('ts',this.areas);      
+    });
   }
   onSubmit(): void {
     // Process checkout data here
@@ -56,6 +77,8 @@ export class MpLevelComponent implements OnInit {
     console.warn('Your order has been submitted');
     // this.checkoutForm.reset();
   }
+
+  
 
 
 }
