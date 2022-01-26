@@ -127,7 +127,7 @@ export class AuthService {
 
 
   login(loginData: any){
-    return this.http.post<AuthResponseData>(this.commonService.getAPI() + '/login', loginData)
+    return this.http.post<AuthResponseData>(this.BASE_API_URL + '/login', loginData)
         .pipe(catchError(this.errorService.serverError), tap(resData => {
           // tslint:disable-next-line:max-line-length
           if (resData.status === true){
@@ -177,7 +177,7 @@ export class AuthService {
   }
 
   logout(){
-    this.http.get<any>(this.commonService.getAPI() + '/logout').subscribe( response => {
+    this.http.get<any>(this.BASE_API_URL + '/logout').subscribe( response => {
       // this.userBehaviorSubject.next(null);
       localStorage.removeItem('user');
       this.router.navigate(['/']).then(r => {
@@ -202,7 +202,7 @@ export class AuthService {
     logoutAll() {
       // this.userBehaviorSubject.next(null);
       // localStorage.removeItem('user');
-      this.http.get<any>(this.commonService.getAPI() + '/revokeAll').subscribe( response => {
+      this.http.get<any>(this.BASE_API_URL + '/revokeAll').subscribe( response => {
         // this.userBehaviorSubject.next(null);
         localStorage.removeItem('user');
         this.router.navigate(['/']).then(r => {
@@ -234,6 +234,6 @@ export class AuthService {
     // Make http post request over api
     // with formData as req
     // return this.http.post('http://127.0.0.1/gold_project/new_gold_api/public/api/uploadPicture', formData);
-    return this.http.post(this.commonService.getAPI() + '/uploadPicture', formData);
+    return this.http.post(this.BASE_API_URL + '/uploadPicture', formData);
   }
 }
