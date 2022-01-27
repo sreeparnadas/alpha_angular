@@ -19,6 +19,7 @@ export class MpLevelComponent implements OnInit {
     id: new FormControl(null),
     personName: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required]),
+    areaId: new FormControl(null, [Validators.required]),
     mobile1: new FormControl(null),
     mobile2: new FormControl(null),
     voterId: new FormControl(null, [Validators.required]),
