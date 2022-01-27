@@ -2,7 +2,8 @@
 <div class="container pt-5">
 
 
-  <form [formGroup]="legislativeInputForm">
+
+  <form [formGroup]="personForm">
     <div class="d-flex">
       <div class="form-group">
         <input class="form-control" formControlName="personName"    placeholder="personName">
@@ -29,22 +30,22 @@
         <input class="form-control" formControlName="aadharId"    placeholder="Aadhar No.">
       </div>
     </div>
+  </form>
 
-    <div class="d-flex pt-2">
+  <div class="d-flex pt-2">
+    <form [formGroup]="userForm">
       <div class="form-group">
-        <select class="selectpicker" data-style="btn-primary" data-live-search="true" style="min-width: 100px; min-height: 40px;">
-          <option data-tokens="mustard" *ngFor="let area of areas">{{area.area_name}}</option>
+        <select class="selectpicker" class="form-control" formControlName="areaId" data-style="btn-primary" data-live-search="true" style="min-width: 200px; min-height: 40px;">
+          <option  data-tokens="mustard"  *ngFor="let area of areas">{{area.area_name}}</option>
         </select>
       </div>
-    </div>
+    </form>
+  </div>
+  <div class="pt-4"><button type="submit" class="btn btn-primary">Submit</button></div>
 
-
-    <!-- <pre>{{areas | json}}</pre> -->
-
-    <div class="pt-4"><button type="submit" class="btn btn-primary">Submit</button></div>
-
-  </form>
-  <button (change)="getAllArea()">test</button>
+  <!-- <pre>{{personForm.value | json}}</pre>
+    <pre>{{userForm.value | json}}</pre> -->
+  <!-- <button (change)="getAllArea()">test</button> -->
 
 
 
