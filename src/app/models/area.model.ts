@@ -1,6 +1,6 @@
 
 export class Area{
   id?: number;
-  areaName?: string;
+  area_name?: string;
 
 }
