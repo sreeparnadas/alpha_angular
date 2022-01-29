@@ -15,15 +15,24 @@ export class MpLevelComponent implements OnInit {
 
   // items = this.cartService.getItems();
 
-  legislativeInputForm = new FormGroup({
+  personForm = new FormGroup({
     id: new FormControl(null),
     personName: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required]),
-    areaId: new FormControl(null, [Validators.required]),
+    // areaId: new FormControl(null, [Validators.required]),
     mobile1: new FormControl(null),
     mobile2: new FormControl(null),
     voterId: new FormControl(null, [Validators.required]),
     aaharId: new FormControl(null, [Validators.required]),
+  });
+
+  userForm = new FormGroup({
+    id: new FormControl(null),
+    userTypeId: new FormControl(null, [Validators.required]),
+    parentId: new FormControl(null, [Validators.required]),
+    areaId: new FormControl(null, [Validators.required]),
+    userDescription: new FormControl(null, [Validators.required]),
+    email: new FormControl(null, [Validators.required]),
   });
 
   areas: Area[] =[];
@@ -68,7 +77,7 @@ export class MpLevelComponent implements OnInit {
     this.areas = this.areaService.getArea();
     this.areaService.getGameTypeListener().subscribe((response: Area[]) => {
       this.areas = response;
-      console.log('ts',this.areas);      
+      console.log('ts',this.areas);
     });
   }
   onSubmit(): void {
@@ -79,7 +88,7 @@ export class MpLevelComponent implements OnInit {
     // this.checkoutForm.reset();
   }
 
-  
+
 
 
 }
