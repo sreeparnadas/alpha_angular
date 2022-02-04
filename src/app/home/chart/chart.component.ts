@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartComponent implements OnInit {
   ngOnInit(): void {
-      
+
   }
   data = [
     { name: '2017', value: 10 },

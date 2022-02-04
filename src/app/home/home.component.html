@@ -1,90 +1,109 @@
-<div class="container" style="background-image:url('assets/map-meghalaya.jpg');width: 1000px; height: 700px;background-size: cover;">
+<div class="container" style="width: 2000px; height: 700px;background-size: cover;">
+  <div class="d-flex flex-column bd-highlight mb-3">
+    <div class="p-2 bd-highlight">
+      <img src="assets/map-meghalaya-map.jpg" class="img-fluid">
+    </div>
+    <div class="d-flex flex-row bd-highlight mb-3">
+      <div class="p-2 col-4 bd-highlight">
+        <img src="assets/map-meghalaya-legend.jpg" class="img-fluid">
+      </div>
+      <div class="p-2 bd-highlight">
+        <p-cascadeSelect [(ngModel)]="selectedCity1" [options]="allStates" optionLabel="assemblyName" optionGroupLabel="name"
+                         [optionGroupChildren]="['districts', 'assemblies']" [style]="{'minWidth': '14rem'}">
+
+        </p-cascadeSelect>
+      </div>
+    </div>
+  </div>
 
   <div class="row">
-    <table class="table table-bordered table-responsive" style="margin-top: 435px;line-height: 0px;width: 555px;margin-left: 296px;">
-      <tbody>
-        <tr>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict1[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict1">{{x.assemblyName}}</div>
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict2[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict2">{{x.assemblyName}}</div>
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict3[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict3">{{x.assemblyName}}</div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict4[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict4">{{x.assemblyName}}</div>
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict5[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict5">{{x.assemblyName}}</div>
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict6[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict6">{{x.assemblyName}}</div>
-            </div>
-          </td>
-        </tr>
 
-        <tr>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict7[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict7">{{x.assemblyName}}</div>
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict8[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict8">{{x.assemblyName}}</div>
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict9[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict9">{{x.assemblyName}}</div>
-            </div>
-          </td>
-        </tr>
 
-        <tr>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict10[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict10">{{x.assemblyName}}</div>
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="d-flex flex-column bd-highlight mb-3">
-              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict11[0].districtName}}</b></div>
-              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict11">{{x.assemblyName}}</div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<!--    <table class="table table-bordered table-responsive" style="margin-top: 435px;line-height: 0px;width: 555px;margin-left: 296px;">-->
+<!--      <tbody>-->
+<!--        <tr>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict1[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict1">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict2[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict2">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict3[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict3">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict4[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict4">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict5[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict5">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict6[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict6">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+
+<!--        <tr>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict7[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict7">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict8[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict8">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict9[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict9">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+
+<!--        <tr>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict10[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict10">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--          <td colspan="2">-->
+<!--            <div class="d-flex flex-column bd-highlight mb-3">-->
+<!--              <div class="p-2 bd-highlight"><b>{{assembliesForDistrict11[0].districtName}}</b></div>-->
+<!--              <div class="p-2 bd-highlight" *ngFor="let x of assembliesForDistrict11">{{x.assemblyName}}</div>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
   </div>
+
 </div>
 
 
 <div class="row" *ngIf="false">
-  <div class="col"><pre>assemblies = {{assembliesForDistrict1 | json}}</pre></div>
+<!--  <div class="col"><pre>assemblies = {{assembliesForDistrict1 | json}}</pre></div>-->
 </div>

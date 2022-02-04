@@ -5,6 +5,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import {ChartModule} from "./chart/chart.module";
+import {CascadeSelectModule} from "primeng/cascadeselect";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -17,6 +19,8 @@ import {ChartModule} from "./chart/chart.module";
     HomeRoutingModule,
     MatTabsModule,
     ChartModule,
+    CascadeSelectModule,
+    FormsModule
   ]
 })
 export class HomeModule { }
