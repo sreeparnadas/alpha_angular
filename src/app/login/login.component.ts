@@ -11,7 +11,14 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  assemblyData: any = '';
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+
+    const routerState = this.router.getCurrentNavigation();
+    if(routerState?.extras.state){
+      this.assemblyData = routerState.extras.state;
+    }
+  }
   hide: boolean = true;
   ngOnInit(): void {
     this.loginForm=new FormGroup({
@@ -25,23 +32,26 @@ export class LoginComponent implements OnInit {
     }
     // console.log(this.loginForm.value);
     // converting password to MD5
+    if(this.assemblyData!=''){
+      console.log(this.assemblyData.assembly.assemblyId);
+      this.loginForm.patchValue({loginId: this.assemblyData.assembly.assemblyId});
+    }
     const md5 = new Md5();
     const passwordMd5 = md5.appendStr(this.loginForm.value.loginPassword).end();
     // const formPassword = form.value.password;
     this.authService.login({loginId: this.loginForm.value.loginId, loginPassword: passwordMd5}).subscribe(response => {
       if (response.status === true){
         if (this.authService.isOwner()){
-          this.router.navigate(['/owner']).then(r => {});
+          this.router.navigate(['/mp']).then(r => {});
         }
         if (this.authService.isDeveloper()){
           this.router.navigate(['/developer']).then(r => {});
         }
-        if (this.authService.isMp()){
+        if (this.authService.isLegislativeCandidate()){
           this.router.navigate(['/mp']).then(r => {});
         }
       }
     });
-
 
   }
 

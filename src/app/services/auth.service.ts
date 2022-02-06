@@ -59,8 +59,8 @@ export class AuthService {
       return false;
     }
   }
-  isMp(){
-    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isMp){
+  isLegislativeCandidate(){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isLegislativeCandidate){
       return true;
     }else{
       return false;
@@ -73,22 +73,7 @@ export class AuthService {
       return false;
     }
   }
-  isManagerSales(): boolean{
-    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isManagerSales){
-      return true;
-    }else{
-      return false;
-    }
-  }
 
-
-  isOfficeStaff(): boolean{
-    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isOfficeStaff){
-      return true;
-    }else{
-      return false;
-    }
-  }
 
   isRefinish(): boolean{
     if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isRefinish){

@@ -25,34 +25,25 @@ export class User{
       return false;
     }
   }
-  get isOwner(){
+  get isDeveloper(){
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 1;
   }
-  get isMp(){
-    // tslint:disable-next-line:triple-equals
-    return this.userTypeId == 3;
-  }
-
-  get isDeveloper(){
+  get isOwner(){
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 2;
   }
-  get isManagerSales(){
+  get isLegislativeCandidate(){
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 3;
   }
-  get isManagerAccounts(){
+  get isPollingStationVolunteer(){
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 4;
   }
-  get isOfficeStaff(){
+  get isGeneralMember(){
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 5;
-  }
-  get isWorker(){
-    // tslint:disable-next-line:triple-equals
-    return this.userTypeId == 6;
   }
 
   get isRefinish(){

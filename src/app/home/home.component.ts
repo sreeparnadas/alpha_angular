@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AssemblyService} from "../services/assembly.service";
 import {Assembly} from "../models/assembly.model";
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
   assembliesForDistrict10: Assembly[] = [];
   assembliesForDistrict11: Assembly[] = [];
 
-  constructor(private assemblyService: AssemblyService) { }
+  constructor(private assemblyService: AssemblyService,private modalService: NgbModal,private router: Router) { }
 
   ngOnInit(): void {
     this.allStates = [
@@ -378,8 +379,11 @@ export class HomeComponent implements OnInit {
     // });
 
   }
-  // counter(i: number) {
-  //   return new Array(i);
-  // }
+  openSm(content:any) {
+    this.modalService.open(content, { size: 'sm' });
+  }
 
+  onAssemblySelect(value: any) {
+    this.router.navigateByUrl('/login', { state: { assembly: value } });
+  }
 }
