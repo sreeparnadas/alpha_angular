@@ -6,7 +6,7 @@
   <form [formGroup]="personForm">
     <div class="d-flex">
       <div class="form-group">
-        <input class="form-control" formControlName="personName"    placeholder="personName">
+        <input class="form-control" formControlName="personName" placeholder="personName">
       </div>
       <div class="form-group pl-3">
         <input class="form-control" formControlName="email"    placeholder="Email">
@@ -34,18 +34,31 @@
 
   <div class="d-flex pt-2">
     <form [formGroup]="userForm">
-      <div class="form-group">
-        <select class="selectpicker" class="form-control" formControlName="areaId" data-style="btn-primary" data-live-search="true" style="min-width: 200px; min-height: 40px;">
-          <option  data-tokens="mustard"  *ngFor="let area of areas">{{area.area_name}}</option>
-        </select>
+      <div class="d-flex pt-2">
+        <div class="form-group">
+          <input class="form-control" formControlName="areaDescription" placeholder="Area">
+  <!--        <select class="selectpicker" class="form-control" formControlName="areaId" data-style="btn-primary" data-live-search="true" style="min-width: 200px; min-height: 40px;">-->
+  <!--          <option  data-tokens="mustard"  *ngFor="let area of areas">{{area.area_name}}</option>-->
+  <!--        </select>-->
+        </div>
+        <div class="form-group pl-3">
+          <textarea class="form-control" rows="2" formControlName="userDescription"  placeholder="userDescription"></textarea>
+        </div>
+      </div>
+
+      <div class="d-flex pt-2">
+        <div class="form-group">
+          <input class="form-control" formControlName="password" placeholder="Password">
+        </div>
       </div>
     </form>
   </div>
-  <div class="pt-4"><button type="submit" class="btn btn-primary">Submit</button></div>
+  <div class="pt-4"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
 
-  <!-- <pre>{{personForm.value | json}}</pre>
-    <pre>{{userForm.value | json}}</pre> -->
-  <!-- <button (change)="getAllArea()">test</button> -->
+  <div class="row" *ngIf="false">
+      <div class="col"><pre>personForm = {{personForm.value | json}}</pre></div>
+      <div class="col"><pre>userForm = {{userForm.value | json}}</pre></div>
+  </div>
 
 
 

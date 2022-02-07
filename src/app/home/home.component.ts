@@ -344,39 +344,6 @@ export class HomeComponent implements OnInit {
         ]
       }
     ];
-    //  this.assemblyService.getAssemblyForDistrict1().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //    this.assembliesForDistrict1 = response.data;
-    //  });
-    // this.assemblyService.getAssemblyForDistrict2().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //   this.assembliesForDistrict2 = response.data;
-    // });
-    // this.assemblyService.getAssemblyForDistrict3().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //   this.assembliesForDistrict3 = response.data;
-    // });
-    // this.assemblyService.getAssemblyForDistrict4().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //   this.assembliesForDistrict4 = response.data;
-    // });
-    // this.assemblyService.getAssemblyForDistrict5().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //   this.assembliesForDistrict5 = response.data;
-    // });
-    // this.assemblyService.getAssemblyForDistrict6().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //   this.assembliesForDistrict6 = response.data;
-    // });
-    // this.assemblyService.getAssemblyForDistrict7().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //   this.assembliesForDistrict7 = response.data;
-    // });
-    // this.assemblyService.getAssemblyForDistrict8().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //   this.assembliesForDistrict8 = response.data;
-    // });
-    // this.assemblyService.getAssemblyForDistrict9().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //   this.assembliesForDistrict9 = response.data;
-    // });
-    // this.assemblyService.getAssemblyForDistrict10().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //   this.assembliesForDistrict10 = response.data;
-    // });
-    // this.assemblyService.getAssemblyForDistrict11().subscribe((response: {success:boolean,message:string,data:Assembly[]}) => {
-    //   this.assembliesForDistrict11 = response.data;
-    // });
 
   }
   openSm(content:any) {

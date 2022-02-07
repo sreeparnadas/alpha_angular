@@ -20,7 +20,6 @@ export class AreaService {
   constructor(private  http: HttpClient, private errorService: ErrorService) {
     this.http.get(this.BASE_API_URL   + '/getAllArea' ).subscribe((response: ServerResponse) => {
       this.areas = response.data;
-      console.log(this.areas);
       this.areaSubject.next([...this.areas]);
     });
   }
