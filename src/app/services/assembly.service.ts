@@ -15,38 +15,8 @@ export class AssemblyService {
 
   }
 
-  getAssemblyForDistrict1():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/1');
-  }
-  getAssemblyForDistrict2():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/2');
-  }
-  getAssemblyForDistrict3():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/3');
-  }
-  getAssemblyForDistrict4():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/4');
-  }
-  getAssemblyForDistrict5():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/5');
-  }
-  getAssemblyForDistrict6():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/6');
-  }
-  getAssemblyForDistrict7():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/7');
-  }
-  getAssemblyForDistrict8():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/8');
-  }
-  getAssemblyForDistrict9():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/9');
-  }
-  getAssemblyForDistrict10():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/10');
-  }
-  getAssemblyForDistrict11():any{
-    return this.http.get(this.BASE_API_URL + '/dev/assembly/district/11');
+  getAssemblyWithDistrict():any{
+    return this.http.get(this.BASE_API_URL + '/dev/assembly/allData');
   }
 
 }
