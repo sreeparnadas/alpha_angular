@@ -9,6 +9,7 @@ import {Md5} from "ts-md5";
 import {User} from "../../models/user.model";
 import {AuthService} from "../../services/auth.service";
 import {PollingStationService} from "../../services/polling-station.service";
+import { AssemblyService } from 'src/app/services/assembly.service';
 
 
 @Component({
@@ -46,8 +47,10 @@ export class MpLevelComponent implements OnInit {
     email: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required]),
   });
+  assemblyConstituencyId: number|undefined;
 
   areas: Area[] =[];
+  person: any;
   loggedInUser: User | undefined;
   pollingStations: any;
   genderList = [{"id": 1,"name": "male"},{"id":2,"name":"female"},{"id":3,"name":"others"}];
@@ -59,6 +62,7 @@ export class MpLevelComponent implements OnInit {
     private pollingStationService: PollingStationService,
     private formBuilder: FormBuilder,
     private areaService: AreaService,
+    private assemblyService: AssemblyService,
   ) {
     // private cartService: CartService,
 
@@ -72,8 +76,8 @@ export class MpLevelComponent implements OnInit {
       this.areas = response;
     });
     this.loggedInUser = this.authService.userBehaviorSubject.value;
-
-    this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {status: boolean,
+    this.assemblyConstituencyId = this.loggedInUser?.assemblyConstituencyId;
+    this.pollingStationService.getPollingStationByAssemblyId(this.assemblyConstituencyId).subscribe((response: {status: boolean,
       message:string,data: any}) => {
       this.pollingStations = response.data;
     });
@@ -84,6 +88,13 @@ export class MpLevelComponent implements OnInit {
       this.areas = response;
     });
   }
+  // getPersonByAssembly(){
+  //   this.assemblyConstituencyId = this.loggedInUser?.assemblyConstituencyId;
+  //   this.person = this.assemblyService.getAllPersonByAssmblyId(this.assemblyConstituencyId);
+  //   this.assemblyService.getAllPersonByAssmblyIdListener().subscribe((response: any) => {
+  //     this.person = response;
+  //   });
+  // }
   onSubmit(): void {
     Swal.fire({
       title: 'Confirmation',

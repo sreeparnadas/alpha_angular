@@ -10,6 +10,8 @@ import {Subject} from 'rxjs';
 })
 export class AssemblyService {
   private BASE_API_URL = environment.BASE_API_URL;
+  
+  personSubject = new Subject<any[]>();
 
   constructor(private http: HttpClient) {
 
@@ -18,5 +20,10 @@ export class AssemblyService {
   getAssemblyWithDistrict():any{
     return this.http.get(this.BASE_API_URL + '/dev/assembly/allData');
   }
-
+  getAllPersonByAssmblyId(assemblyId:number):any{
+    return this.http.get(this.BASE_API_URL + '/person/assembly'+ assemblyId);
+  }
+  getAllPersonByAssmblyIdListener(){
+    return this.personSubject.asObservable();
+  }
 }
