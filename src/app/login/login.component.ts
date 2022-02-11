@@ -32,14 +32,20 @@ export class LoginComponent implements OnInit {
     }
     // console.log(this.loginForm.value);
     // converting password to MD5
+    console.log(this.assemblyData);
+    let loginType = 'others';
     if(this.assemblyData!=''){
       console.log(this.assemblyData.assembly.assemblyId);
       this.loginForm.patchValue({loginId: this.assemblyData.assembly.assemblyId});
+      loginType = 'admin';
     }
     const md5 = new Md5();
     const passwordMd5 = md5.appendStr(this.loginForm.value.loginPassword).end();
+
+    let loginData = {loginId: this.loginForm.value.loginId,loginPassword: passwordMd5, loginType: loginType};
+
     // const formPassword = form.value.password;
-    this.authService.login({loginId: this.loginForm.value.loginId, loginPassword: passwordMd5}).subscribe(response => {
+    this.authService.login(loginData).subscribe(response => {
       if (response.status === true){
         this.router.navigate(['/mp']).then(r => {});
         // if (this.authService.isOwner()){
