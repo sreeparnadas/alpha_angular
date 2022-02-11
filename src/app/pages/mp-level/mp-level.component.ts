@@ -47,10 +47,10 @@ export class MpLevelComponent implements OnInit {
     email: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required]),
   });
-  assemblyConstituencyId: number|undefined;
+
 
   areas: Area[] =[];
-  person: any;
+  pollingMembers: any;
   loggedInUser: User | undefined;
   pollingStations: any;
   genderList = [{"id": 1,"name": "male"},{"id":2,"name":"female"},{"id":3,"name":"others"}];
@@ -76,10 +76,16 @@ export class MpLevelComponent implements OnInit {
       this.areas = response;
     });
     this.loggedInUser = this.authService.userBehaviorSubject.value;
-    this.assemblyConstituencyId = this.loggedInUser?.assemblyConstituencyId;
-    this.pollingStationService.getPollingStationByAssemblyId(this.assemblyConstituencyId).subscribe((response: {status: boolean,
+
+    this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {status: boolean,
       message:string,data: any}) => {
       this.pollingStations = response.data;
+    });
+
+
+    this.assemblyService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: any) => {
+      this.pollingMembers =  response.data;
+      console.log(response.data);
     });
   }
   getAllArea(){
@@ -88,13 +94,7 @@ export class MpLevelComponent implements OnInit {
       this.areas = response;
     });
   }
-  // getPersonByAssembly(){
-  //   this.assemblyConstituencyId = this.loggedInUser?.assemblyConstituencyId;
-  //   this.person = this.assemblyService.getAllPersonByAssmblyId(this.assemblyConstituencyId);
-  //   this.assemblyService.getAllPersonByAssmblyIdListener().subscribe((response: any) => {
-  //     this.person = response;
-  //   });
-  // }
+
   onSubmit(): void {
     Swal.fire({
       title: 'Confirmation',
@@ -118,7 +118,7 @@ export class MpLevelComponent implements OnInit {
           age: personFormData.age,
           gender: personFormData.gender,
           // email: this.loggedInUser?.uniqueId,
-          email: 'test',
+          email: personFormData.email,
           password: passwordMd5,
           mobile1: personFormData.mobile1,
           mobile2: personFormData.mobile2,
@@ -128,7 +128,7 @@ export class MpLevelComponent implements OnInit {
           remark: userFormData.remark
         };
         this.userRegistrationService.saveNewUser(masterData).subscribe(response => {
-          console.log(response);
+          // console.log(response);
           if (response.status){
             const responseData = response.data;
             this.personForm.reset();

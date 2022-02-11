@@ -49,7 +49,7 @@
                    class="custom"
                    bindValue="pollingStationId"
                    appendTo="body"
-                   formControlName="gender"
+                   formControlName="pollingStationId"
                    placeholder="Polling number"
                    style="height: 200 !important;">
         </ng-select>
@@ -69,32 +69,42 @@
   </div>
   <div class="pt-4"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
 
-  <div class="row" *ngIf="false">
-      <div class="col"><pre>personForm = {{personForm.value | json}}</pre></div>
-      <div class="col"><pre>userForm = {{userForm.value | json}}</pre></div>
-      <div class="col"><pre>pollingStations = {{pollingStations | json}}</pre></div>
+
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Gender</th>
+          <th scope="col">mobile1</th>
+          <th scope="col">mobile2</th>
+          <th scope="col">voterId</th>
+          <th scope="col">pollingNumber</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let x of pollingMembers">
+        <tr>
+          <td scope="row">{{x.personId}}</td>
+          <td scope="row">{{x.personName}}</td>
+          <td scope="row">{{x.age}}</td>
+          <td scope="row">{{x.gender}}</td>
+          <td scope="row">{{x.mobile1}}</td>
+          <td scope="row">{{x.mobile2}}</td>
+          <td scope="row">{{x.voterId}}</td>
+          <td scope="row">{{x.pollingNumber}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-
-
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-    </tbody>
-  </table>
-
+  <div class="row" *ngIf="false">
+    <div class="col"><pre>personForm = {{personForm.value | json}}</pre></div>
+    <div class="col"><pre>userForm = {{userForm.value | json}}</pre></div>
+    <div class="col"><pre>pollingStations = {{pollingStations | json}}</pre></div>
+    <div class="col"><pre>pollingMembers = {{pollingMembers | json}}</pre></div>
+  </div>
 
 </div>
