@@ -8,7 +8,7 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
-
+import {NgSelectModule} from "@ng-select/ng-select";
 
 
 @NgModule({
@@ -20,11 +20,12 @@ import { MatCardModule } from '@angular/material/card';
     MpLevelRoutingModule,
     FormsModule,
     MatFormFieldModule,
-    
+
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule ,
     MatCardModule,
+    NgSelectModule
     // FormGroupModule,
   ]
 })

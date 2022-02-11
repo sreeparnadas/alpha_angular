@@ -19,6 +19,7 @@ export interface AuthResponseData {
     userTypeId: number;
     userTypeName: string;
     token: string;
+    assemblyConstituencyId: number;
   };
 }
 
@@ -104,7 +105,7 @@ export class AuthService {
     if (!userData){
       return;
     }
-    const loadedUser = new User(userData.uniqueId, userData.userName, userData._authKey, userData.userTypeId,userData.userTypeName);
+    const loadedUser = new User(userData.uniqueId, userData.userName, userData._authKey, userData.userTypeId,userData.userTypeName,userData.assemblyConstituencyId);
     if (loadedUser.authKey){
       this.userBehaviorSubject.next(loadedUser);
     }
@@ -116,11 +117,12 @@ export class AuthService {
         .pipe(catchError(this.errorService.serverError), tap(resData => {
           // tslint:disable-next-line:max-line-length
           if (resData.status === true){
+            console.log(resData.data);
             const user = new User(resData.data.uniqueId,
                 resData.data.userName,
                 resData.data.token,
                 resData.data.userTypeId,
-                resData.data.userTypeName);
+                resData.data.userTypeName,resData.data.assemblyConstituencyId);
             this.userBehaviorSubject.next(user);
             localStorage.setItem('user', JSON.stringify(user));
           }
