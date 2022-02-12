@@ -10,6 +10,7 @@ import {User} from "../../models/user.model";
 import {AuthService} from "../../services/auth.service";
 import {PollingStationService} from "../../services/polling-station.service";
 import { AssemblyService } from 'src/app/services/assembly.service';
+import {PollingMember} from "../../models/PollingMember";
 
 
 @Component({
@@ -50,7 +51,7 @@ export class MpLevelComponent implements OnInit {
 
 
   areas: Area[] =[];
-  pollingMembers: any;
+  pollingMembers: PollingMember[] = [];
   loggedInUser: User | undefined;
   pollingStations: any;
   genderList = [{"id": 1,"name": "male"},{"id":2,"name":"female"},{"id":3,"name":"others"}];
@@ -61,8 +62,7 @@ export class MpLevelComponent implements OnInit {
     private authService: AuthService,
     private pollingStationService: PollingStationService,
     private formBuilder: FormBuilder,
-    private areaService: AreaService,
-    private assemblyService: AssemblyService,
+    private areaService: AreaService
   ) {
     // private cartService: CartService,
 
@@ -83,10 +83,13 @@ export class MpLevelComponent implements OnInit {
     });
 
 
-    this.assemblyService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: any) => {
+    this.userRegistrationService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {status:string,message:string,data:PollingMember[]}) => {
       this.pollingMembers =  response.data;
-      console.log(response.data);
     });
+    this.userRegistrationService.getAllPersonByAssemblyIdListener().subscribe((response: any) => {
+      this.pollingMembers = response.data;
+      console.log('listener',this.pollingMembers);
+    })
   }
   getAllArea(){
     this.areas = this.areaService.getArea();
@@ -160,8 +163,6 @@ export class MpLevelComponent implements OnInit {
       }
     });
   }
-
-
 
 
 }
