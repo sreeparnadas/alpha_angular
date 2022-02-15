@@ -33,9 +33,6 @@
       <div class="form-group pl-3">
         <input class="form-control" formControlName="mobile2"    placeholder="Mobile2">
       </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="email"    placeholder="Email">
-      </div>
     </div>
 
     <div class="d-flex pt-2">
@@ -67,7 +64,7 @@
       </div>
     </form>
   </div>
-  <div class="pt-4"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
+  <div class="pt-4 pb-3"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
 
 
   <div class="card">
@@ -79,6 +76,7 @@
           <th scope="col">Name</th>
           <th scope="col">Age</th>
           <th scope="col">Gender</th>
+          <th scope="col">Email</th>
           <th scope="col">mobile1</th>
           <th scope="col">mobile2</th>
           <th scope="col">voterId</th>
@@ -91,6 +89,7 @@
           <td scope="row">{{x.personName}}</td>
           <td scope="row">{{x.age}}</td>
           <td scope="row">{{x.gender}}</td>
+          <td scope="row">{{x.email}}</td>
           <td scope="row">{{x.mobile1}}</td>
           <td scope="row">{{x.mobile2}}</td>
           <td scope="row">{{x.voterId}}</td>

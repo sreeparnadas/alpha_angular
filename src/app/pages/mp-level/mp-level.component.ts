@@ -87,8 +87,7 @@ export class MpLevelComponent implements OnInit {
       this.pollingMembers =  response.data;
     });
     this.userRegistrationService.getAllPersonByAssemblyIdListener().subscribe((response: any) => {
-      this.pollingMembers = response.data;
-      console.log('listener',this.pollingMembers);
+      this.pollingMembers = response;
     })
   }
   getAllArea(){

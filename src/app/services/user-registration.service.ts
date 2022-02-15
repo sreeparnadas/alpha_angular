@@ -35,9 +35,9 @@ export class UserRegistrationService {
   saveNewUser(userData: any){
     return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/person', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
-        this.pollingMembers.unshift(response.data);
         console.log(response.data);
-        // this.pollingMemberSubject.next([...this.pollingMembers]);
+        this.pollingMembers.unshift(response.data);
+        this.pollingMemberSubject.next([...this.pollingMembers]);
       }));
   }
 }
