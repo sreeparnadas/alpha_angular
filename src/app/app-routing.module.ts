@@ -21,6 +21,7 @@ const routes: Routes = [
   },
   { path: 'owner', loadChildren: () => import('./pages/owner/owner.module').then(m => m.OwnerModule) },
   { path: 'mp', loadChildren: () => import('./pages/mp-level/mp-level.module').then(m => m.MpLevelModule) },
+  { path: 'legislative', loadChildren: () => import('./pages/legislative/legislative.module').then(m => m.LegislativeModule) },
   { path: 'developer', loadChildren: () => import('./pages/developer/developer.module').then(m => m.DeveloperModule) },
 
   { path: 'Sidenav', loadChildren: () => import('./sidenavs/sidenav/sidenav.module').then(m => m.SidenavModule) },
@@ -50,6 +51,8 @@ const routes: Routes = [
   { path: 'mpLevel', loadChildren: () => import('./pages/mp-level/mp-level.module').then(m => m.MpLevelModule) },
 
   { path: 'sidenavMp', loadChildren: () => import('./sidenavs/sidenav-mp/sidenav-mp.module').then(m => m.SidenavMpModule) },
+
+  { path: 'legislative', loadChildren: () => import('./pages/legislative/legislative.module').then(m => m.LegislativeModule) },
 
 ];
 

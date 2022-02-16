@@ -47,16 +47,16 @@ export class LoginComponent implements OnInit {
     // const formPassword = form.value.password;
     this.authService.login(loginData).subscribe(response => {
       if (response.status === true){
-        this.router.navigate(['/mp']).then(r => {});
-        // if (this.authService.isOwner()){
-        //   this.router.navigate(['/mp']).then(r => {});
-        // }
-        // if (this.authService.isDeveloper()){
-        //   this.router.navigate(['/developer']).then(r => {});
-        // }
-        // if (this.authService.isLegislativeCandidate()){
-        //   this.router.navigate(['/mp']).then(r => {});
-        // }
+        console.log(this.authService.isLegislativeCandidate());
+        if (this.authService.isOwner()){
+          this.router.navigate(['/mp']).then(r => {});
+        }
+        if (this.authService.isDeveloper()){
+          this.router.navigate(['/developer']).then(r => {});
+        }
+        if (this.authService.isLegislativeCandidate()){
+          this.router.navigate(['/legislative']).then(r => {});
+        }
       }
     });
 

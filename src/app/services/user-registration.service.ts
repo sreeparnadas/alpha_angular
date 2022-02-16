@@ -40,4 +40,13 @@ export class UserRegistrationService {
         this.pollingMemberSubject.next([...this.pollingMembers]);
       }));
   }
+
+  savePollingVolunteer(userData: any){
+    return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/legislative', userData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        console.log(response.data);
+        this.pollingMembers.unshift(response.data);
+        this.pollingMemberSubject.next([...this.pollingMembers]);
+      }));
+  }
 }
