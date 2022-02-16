@@ -61,7 +61,7 @@
   <div class="pt-4 pb-3"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
 
 
-  <div class="card" *ngIf="false">
+  <div class="card" *ngIf="true">
     <div class="card-body">
       <table class="table">
         <thead>
@@ -77,7 +77,7 @@
           <th scope="col">pollingNumber</th>
         </tr>
         </thead>
-        <tbody *ngFor="let x of pollingMembers">
+        <tbody *ngFor="let x of pollingVolunteers">
         <tr>
           <td scope="row">{{x.personId}}</td>
           <td scope="row">{{x.personName}}</td>
@@ -97,7 +97,7 @@
     <div class="col"><pre>personForm = {{personForm.value | json}}</pre></div>
     <div class="col"><pre>userForm = {{userForm.value | json}}</pre></div>
     <div class="col"><pre>pollingStations = {{pollingStations | json}}</pre></div>
-    <div class="col"><pre>pollingMembers = {{pollingMembers | json}}</pre></div>
+    <div class="col"><pre>pollingVolunteers = {{pollingVolunteers | json}}</pre></div>
   </div>
 
 </div>

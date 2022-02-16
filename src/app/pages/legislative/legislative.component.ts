@@ -8,6 +8,7 @@ import {PollingStationService} from "../../services/polling-station.service";
 import {AreaService} from "../../services/area.service";
 import Swal from "sweetalert2";
 import {Md5} from "ts-md5";
+import {PollingVolunteer} from "../../models/PollingVolunteer";
 
 @Component({
   selector: 'app-legislative',
@@ -42,7 +43,7 @@ export class LegislativeComponent implements OnInit {
     password: new FormControl(null, [Validators.required]),
   });
 
-  pollingMembers: PollingMember[] = [];
+  pollingVolunteers: PollingVolunteer[] = [];
   loggedInUser: User | undefined;
   pollingStations: any;
   genderList = [{"id": 1,"name": "male"},{"id":2,"name":"female"},{"id":3,"name":"others"}];
@@ -57,10 +58,21 @@ export class LegislativeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedInUser = this.authService.userBehaviorSubject.value;
+
     this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {status: boolean,
       message:string,data: any}) => {
       this.pollingStations = response.data;
     });
+
+
+    this.userRegistrationService.getAllVolunteersByPollingId(this.loggedInUser?.uniqueId)
+      .subscribe((response: {status:string,message:string,data:PollingVolunteer[]}) => {
+      this.pollingVolunteers =  response.data;
+    });
+    this.userRegistrationService.getAllVolunteerByPollingIdListener().subscribe((response: any) => {
+      this.pollingVolunteers = response;
+    })
+
   }
 
 

@@ -6,6 +6,7 @@ import {UserRegistration} from "../models/userRegistration.model";
 import {catchError, tap} from 'rxjs/operators';
 import {PollingMember} from "../models/PollingMember";
 import {Subject} from 'rxjs';
+import {PollingVolunteer} from "../models/PollingVolunteer";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,9 @@ import {Subject} from 'rxjs';
 export class UserRegistrationService {
   private BASE_API_URL = environment.BASE_API_URL;
   pollingMemberSubject = new Subject<any[]>();
+  pollingVolunteerSubject = new Subject<any[]>();
   pollingMembers: PollingMember[] = [];
+  pollingVolunteers: PollingVolunteer[] = [];
 
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
@@ -41,12 +44,28 @@ export class UserRegistrationService {
       }));
   }
 
+
+
+
+  getAllVolunteersByPollingId(userParentId:number):any{
+
+    return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/legislative/'+ userParentId)
+      .pipe(catchError(this.errorService.serverError),
+        tap((response : {status:string,message:string,data:PollingVolunteer[]}) => {
+          this.pollingVolunteers = response.data;
+          this.pollingVolunteerSubject.next([...this.pollingVolunteers]);
+        }));
+
+  }
+  getAllVolunteerByPollingIdListener(){
+    return this.pollingVolunteerSubject.asObservable();
+  }
+
   savePollingVolunteer(userData: any){
     return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/legislative', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
-        console.log(response.data);
-        this.pollingMembers.unshift(response.data);
-        this.pollingMemberSubject.next([...this.pollingMembers]);
+        this.pollingVolunteers.unshift(response.data);
+        this.pollingVolunteerSubject.next([...this.pollingVolunteers]);
       }));
   }
 }
