@@ -1,0 +1,23 @@
+<!--<p>assembly-admin-dashboard works!</p>-->
+<!--<pre>reportData = {{reportData | json}}</pre>-->
+
+<div class="card mt-5">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Polling number</th>
+        <th scope="col">Total volunteer</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let x of reportData">
+      <tr>
+        <td scope="row"></td>
+        <td scope="row">{{x.pollingNumber}}</td>
+        <td scope="row">{{x.totalVolunteer}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
