@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
     // const formPassword = form.value.password;
     this.authService.login(loginData).subscribe(response => {
       if (response.status === true){
-        console.log(this.authService.isLegislativeCandidate());
         if (this.authService.isOwner()){
           this.router.navigate(['/mp']).then(r => {});
         }
@@ -56,6 +55,9 @@ export class LoginComponent implements OnInit {
         }
         if (this.authService.isLegislativeCandidate()){
           this.router.navigate(['/legislative']).then(r => {});
+        }
+        if (this.authService.isPollingStationVolunteer()){
+          this.router.navigate(['/pollingVolunteer']).then(r => {});
         }
       }
     });

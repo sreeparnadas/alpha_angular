@@ -67,6 +67,15 @@ export class AuthService {
       return false;
     }
   }
+
+  isPollingStationVolunteer(){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isPollingStationVolunteer){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   isDeveloper(): boolean{
     if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isDeveloper){
       return true;

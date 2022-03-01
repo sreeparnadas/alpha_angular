@@ -28,38 +28,42 @@ import {SidenavDeveloperModule} from "./sidenavs/sidenav-developer/sidenav-devel
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { SidenavMpModule } from './sidenavs/sidenav-mp/sidenav-mp.module';
+import {SidenavLegislativeModule} from "./sidenavs/sidenav-legislative/sidenav-legislative.module";
+import {SidenavPollingVolunteerModule} from "./sidenavs/sidenav-polling-volunteer/sidenav-polling-volunteer.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     // SidenavComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    HttpClientModule,
-    // MatToolbarModule,
-    // MatMenuModule,
-    // MatIconModule,
-    // MatDividerModule,
-    // MatListModule,
-    // MatCardModule,
-    // MatTabsModule,
-    // NgChartsModule,
-    // MatInputModule,
-    // MatButtonModule,
-    // ReactiveFormsModule,
-    SidenavModule,
-    HeaderModule,
-    SidenavOwnerModule,
-    SidenavDeveloperModule,
-    SidenavMpModule,
-    FontAwesomeModule,
-    MatProgressSpinnerModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        HttpClientModule,
+        // MatToolbarModule,
+        // MatMenuModule,
+        // MatIconModule,
+        // MatDividerModule,
+        // MatListModule,
+        // MatCardModule,
+        // MatTabsModule,
+        // NgChartsModule,
+        // MatInputModule,
+        // MatButtonModule,
+        // ReactiveFormsModule,
+        SidenavModule,
+        HeaderModule,
+        SidenavOwnerModule,
+        SidenavDeveloperModule,
+        SidenavMpModule,
+        FontAwesomeModule,
+        MatProgressSpinnerModule,
+        SidenavLegislativeModule,
+        SidenavPollingVolunteerModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],

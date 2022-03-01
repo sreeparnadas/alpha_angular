@@ -53,6 +53,13 @@ const routes: Routes = [
   { path: 'sidenavMp', loadChildren: () => import('./sidenavs/sidenav-mp/sidenav-mp.module').then(m => m.SidenavMpModule) },
 
   { path: 'legislative', loadChildren: () => import('./pages/legislative/legislative.module').then(m => m.LegislativeModule) },
+  { path: 'pollingVolunteer', loadChildren: () => import('./pages/polling-volunteer/polling-volunteer.module').then(m => m.PollingVolunteerModule) },
+
+  { path: 'sidenavLegislative', loadChildren: () => import('./sidenavs/sidenav-legislative/sidenav-legislative.module').then(m => m.SidenavLegislativeModule) },
+
+  { path: 'pollingVolunteer', loadChildren: () => import('./pages/polling-volunteer/polling-volunteer.module').then(m => m.PollingVolunteerModule) },
+
+  { path: 'sidenavPollingVolunteer', loadChildren: () => import('./sidenavs/sidenav-polling-volunteer/sidenav-polling-volunteer.module').then(m => m.SidenavPollingVolunteerModule) },
 
 ];
 

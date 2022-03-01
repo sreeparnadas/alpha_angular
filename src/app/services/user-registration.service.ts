@@ -68,4 +68,12 @@ export class UserRegistrationService {
         this.pollingVolunteerSubject.next([...this.pollingVolunteers]);
       }));
   }
+
+  savePollingGeneralMember(userData: any){
+    return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/volunteer', userData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        this.pollingVolunteers.unshift(response.data);
+        this.pollingVolunteerSubject.next([...this.pollingVolunteers]);
+      }));
+  }
 }
