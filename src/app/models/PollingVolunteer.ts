@@ -16,4 +16,5 @@ export class PollingVolunteer{
   voterId?: string;
   assemblyName?: string;
   pollingNumber?: number;
+  totalWorkers?: number;
 }

@@ -15,12 +15,18 @@ export class AssemblyAdminDashboardService {
   reportData: AssemblyAdminReport[] = [];
   reportDataSubject = new Subject<any[]>();
 
+  volunteerReportsData: PollingVolunteer[] = [];
+  volunteerReportsDataSubject = new Subject<any[]>();
+
+  workerReportsData: PollingVolunteer[] = [];
+  workerReportsDataSubject = new Subject<any[]>();
+
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
 
   getReport(assemblyId:number):any{
 
-    return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/assembly/admin/dashboard/'+ assemblyId)
+    return this.http.get<{status:string,message:string,data:AssemblyAdminReport[]}>(this.BASE_API_URL + '/assembly/admin/dashboard/'+ assemblyId)
       .pipe(catchError(this.errorService.serverError),
         tap((response : {status:string,message:string,data:AssemblyAdminReport[]}) => {
           this.reportData = response.data;
@@ -30,6 +36,34 @@ export class AssemblyAdminDashboardService {
   }
   getReportListener(){
     return this.reportDataSubject.asObservable();
+  }
+
+  getVolunteerDetailsReport(pollingId:number):any{
+
+    return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/pollingStations/'+pollingId+'/volunteers')
+      .pipe(catchError(this.errorService.serverError),
+        tap((response : {status:string,message:string,data:PollingVolunteer[]}) => {
+          this.volunteerReportsData = response.data;
+          this.volunteerReportsDataSubject.next([...this.volunteerReportsData]);
+        }));
+
+  }
+  getVolunteerDetailsReportListener(){
+    return this.volunteerReportsDataSubject.asObservable();
+  }
+
+  getWorkerReport(volunteerId:number):any{
+
+    return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/volunteer/'+volunteerId+'/workers')
+      .pipe(catchError(this.errorService.serverError),
+        tap((response : {status:string,message:string,data:PollingVolunteer[]}) => {
+          this.workerReportsData = response.data;
+          this.volunteerReportsDataSubject.next([...this.volunteerReportsData]);
+        }));
+
+  }
+  getWorkerReportListener(){
+    return this.workerReportsDataSubject.asObservable();
   }
 
 }
