@@ -2,6 +2,7 @@
 
 export class UserRegistration{
   person_type_id?: number;
+  memberCode?: string;
   person_name?: string;
   email?: string;
   mobile1?: string;

@@ -1,5 +1,5 @@
 
-export class PollingMember{
+export class GeneralMember{
   id?: number;
   personId?: number;
   parentId?: number;
@@ -7,6 +7,7 @@ export class PollingMember{
   personName?: string;
   parentName?: string;
   remark?: string;
+  areaDescription?: string;
   email?: string;
   personTypeName?: string;
   age?: number;
@@ -16,4 +17,5 @@ export class PollingMember{
   voterId?: string;
   assemblyName?: string;
   pollingNumber?: number;
+  totalWorkers?: number;
 }

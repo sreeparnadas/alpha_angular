@@ -7,6 +7,7 @@ import {catchError, tap} from 'rxjs/operators';
 import {PollingMember} from "../models/PollingMember";
 import {Subject} from 'rxjs';
 import {PollingVolunteer} from "../models/PollingVolunteer";
+import {GeneralMember} from "../models/GeneralMember";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,10 @@ export class UserRegistrationService {
   private BASE_API_URL = environment.BASE_API_URL;
   pollingMemberSubject = new Subject<any[]>();
   pollingVolunteerSubject = new Subject<any[]>();
+  generalVolunteerSubject = new Subject<any[]>();
   pollingMembers: PollingMember[] = [];
   pollingVolunteers: PollingVolunteer[] = [];
+  pollingGeneralMembers: GeneralMember[] = [];
 
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
@@ -58,6 +61,21 @@ export class UserRegistrationService {
 
   }
   getAllVolunteerByPollingIdListener(){
+    return this.pollingVolunteerSubject.asObservable();
+  }
+
+
+  getAllGeneralMembersByPollingId(userParentId:number):any{
+
+    return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/pollingStations/'+ userParentId + '/workers')
+      .pipe(catchError(this.errorService.serverError),
+        tap((response : {status:string,message:string,data:GeneralMember[]}) => {
+          this.pollingGeneralMembers = response.data;
+          this.generalVolunteerSubject.next([...this.pollingGeneralMembers]);
+        }));
+
+  }
+  getAllGeneralMembersByPollingIdListener(){
     return this.pollingVolunteerSubject.asObservable();
   }
 

@@ -5,6 +5,8 @@ import {UserRegistrationService} from "../../services/user-registration.service"
 import {AuthService} from "../../services/auth.service";
 import Swal from "sweetalert2";
 import {Md5} from "ts-md5";
+import {PollingMember} from "../../models/PollingMember";
+import {GeneralMember} from "../../models/GeneralMember";
 
 @Component({
   selector: 'app-polling-volunteer',
@@ -40,6 +42,8 @@ export class PollingVolunteerComponent implements OnInit {
   });
   loggedInUser: User | undefined;
   genderList = [{"id": 1,"name": "male"},{"id":2,"name":"female"},{"id":3,"name":"others"}];
+  pollingGeneralMembers: GeneralMember[] = [];
+
   constructor(
     private userRegistrationService: UserRegistrationService,
     private authService: AuthService,
@@ -48,6 +52,13 @@ export class PollingVolunteerComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedInUser = this.authService.userBehaviorSubject.value;
+
+    this.userRegistrationService.getAllGeneralMembersByPollingId(this.loggedInUser?.uniqueId).subscribe((response: {status:string,message:string,data:GeneralMember[]}) => {
+      this.pollingGeneralMembers =  response.data;
+    });
+    this.userRegistrationService.getAllGeneralMembersByPollingIdListener().subscribe((response: any) => {
+      this.pollingGeneralMembers = response;
+    });
   }
 
   onSubmit(): void {

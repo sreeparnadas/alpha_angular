@@ -3,6 +3,7 @@ export class PollingVolunteer{
   id?: number;
   personId?: number;
   parentId?: number;
+  memberCode?: string;
   personName?: string;
   parentName?: string;
   remark?: string;
